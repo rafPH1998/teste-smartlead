@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
+use App\Services\ViaCepService;
 
 class UserController extends Controller
 {
@@ -34,9 +35,21 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         $user = User::with('address')->findOrFail($id);
         return response()->json($user);
     }
+
+    public function searchUserAddress(string $cep, ViaCepService $viaCep)
+    {
+        $endereco = $viaCep->buscarEnderecoPorCep($cep);
+
+        if (!$endereco) {
+            return response()->json(['erro' => 'CEP não encontrado'], 404);
+        }
+    
+        return response()->json($endereco);
+    }
+    
 }
