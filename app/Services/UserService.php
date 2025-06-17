@@ -16,7 +16,7 @@ class UserService
 
     public function getAllUsers()
     {
-        return User::with('address')->paginate(5);
+        return User::with('address')->orderBy('id', "DESC")->paginate(5);
     }
 
     public function createUserWithAddress(array $data): ?User

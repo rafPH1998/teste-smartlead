@@ -1,21 +1,28 @@
+# Para rodar a aplicação, siga o passo a passo
 
-# Setup Docker Laravel 11 com PHP 8.3
-[Assine a Academy, e Seja VIP!](https://academy.especializati.com.br)
+## Esse projeto tem como finalidade a criação de uma aplicação Laravel que permita cadastrar e listar **endereços de usuários**, consumindo a API pública do [ViaCEP](https://viacep.com.br/) para preencher os dados de endereço a partir do CEP informado.
 
-### Passo a passo
-Clone Repositório
-```sh
-git clone -b laravel-11-with-php-8.3 https://github.com/especializati/setup-docker-laravel.git app-laravel
+### Tecnologias utilizadas
+
+- **`Laravel 11`**
+- **`MySQL`**
+- **`Docker`**
+
+## Clone o repositório
+
+```bash
+git clone https://github.com/rafPH1998/teste-smartlead.git
 ```
-```sh
-cd app-laravel
-```
 
+## Acesse a pasta
+
+```bash
+cd teste-smartlead
+```
 Suba os containers do projeto
 ```sh
 docker-compose up -d
 ```
-
 
 Crie o Arquivo .env
 ```sh
@@ -33,14 +40,14 @@ Instale as dependências do projeto
 composer install
 ```
 
+Caso gerar erro ao rodar o comando, pode ser erro de permissão, caso aconteça, sai do container com: exit e em seguida rode para dar as permissões:
+```sh
+sudo chmod -R 777 .
+```
+
 Gere a key do projeto Laravel
 ```sh
 php artisan key:generate
-```
-
-OPCIONAL: Gere o banco SQLite (caso não use o banco MySQL)
-```sh
-touch database/database.sqlite
 ```
 
 Rodar as migrations
@@ -48,5 +55,17 @@ Rodar as migrations
 php artisan migrate
 ```
 
+Rode o comando para gerar os seed e dados ficticios
+```sh
+php artisan db:seed
+```
+
+Rode o comando para executar os testes
+```sh
+php artisan test
+```
+
+
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)
+
