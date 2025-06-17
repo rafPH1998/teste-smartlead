@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
-use App\Models\Address;
 use App\Services\ViaCepService;
 
 class UserController extends Controller
@@ -13,7 +12,7 @@ class UserController extends Controller
     {
         $users = User::with('address')->paginate(10);
         return view('users.index', compact('users'));
-        
+
     }
 
     public function create()
