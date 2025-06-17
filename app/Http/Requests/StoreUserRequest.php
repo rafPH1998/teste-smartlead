@@ -27,5 +27,20 @@ class StoreUserRequest extends FormRequest
             'cep' => ['required', 'regex:/^\d{5}-?\d{3}$/'],
         ];
     }
-    
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'O campo nome é obrigatório.',
+            'name.string' => 'O nome deve ser um texto.',
+            'name.max' => 'O nome não pode ter mais que 255 caracteres.',
+
+            'email.required' => 'O campo e-mail é obrigatório.',
+            'email.email' => 'Informe um endereço de e-mail válido.',
+            'email.unique' => 'Este e-mail já está em uso.',
+
+            'cep.required' => 'O campo CEP é obrigatório.',
+            'cep.regex' => 'Informe um CEP válido no formato 00000-000.',
+        ];
+    }
 }

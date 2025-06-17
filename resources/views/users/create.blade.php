@@ -20,20 +20,20 @@
         <div class="mb-4">
             <label class="block text-gray-700">Nome</label>
             <input type="text" name="name" value="{{ old('name') }}"
-                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" placeholder="Digite seu nome">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Email</label>
             <input type="email" name="email" value="{{ old('email') }}"
-                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2" placeholder="Digite seu email">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">CEP</label>
             <input type="text" name="cep" value="{{ old('cep') }}"
-                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-                   placeholder="00000-000">
+                   class="mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2"
+                   placeholder="00000000 (Sem traços)">
         </div>
 
         <div class="flex justify-end">

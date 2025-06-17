@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUserRequest;
+use App\Services\UserService;
+use Illuminate\Http\RedirectResponse;
 use App\Models\User;
-use App\Services\ViaCepService;
 
 class UserController extends Controller
 {
+    public function __construct(protected UserService $userService)
+    { }
+
     public function index()
     {
-        $users = User::with('address')->paginate(10);
+        $users = $this->userService->getAllUsers();
         return view('users.index', compact('users'));
-
     }
 
     public function create()
@@ -20,22 +23,13 @@ class UserController extends Controller
         return view('users.create');
     }
 
-    public function store(StoreUserRequest $request, ViaCepService $viaCep)
+    public function store(StoreUserRequest $request): RedirectResponse
     {
-        $data = $request->validated();
+        $user = $this->userService->createUserWithAddress($request->validated());
 
-        $endereco = $viaCep->buscarEnderecoPorCep($data['cep']);
-
-        if (!$endereco) {
+        if (!$user) {
             return back()->withErrors(['cep' => 'CEP inválido ou não encontrado'])->withInput();
         }
-
-        $user = User::create($request->only('name', 'email'));
-
-        $user->address()->create([
-            'cep' => $data['cep'],
-            ...$endereco
-        ]);
 
         return redirect()->route('users.index');
     }
