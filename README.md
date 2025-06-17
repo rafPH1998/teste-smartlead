@@ -7,6 +7,7 @@
 - **`Laravel 11`**
 - **`MySQL`**
 - **`Docker`**
+- **`TailwindCSS`**
 
 ## Clone o repositório
 
