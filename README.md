@@ -40,7 +40,7 @@ Instale as dependências do projeto
 composer install
 ```
 
-Caso gerar erro ao rodar o comando, pode ser erro de permissão, caso aconteça, sai do container com: exit e em seguida rode para dar as permissões:
+Caso gerar erro ao rodar o comando, pode ser erro de permissão, caso aconteça, saia do container, escrava EXIT e em seguida rode o comando abaixo para dar as permissões:
 ```sh
 sudo chmod -R 777 .
 ```
@@ -66,6 +66,6 @@ php artisan test
 ```
 
 
-Acesse o projeto
-[http://localhost:8000](http://localhost:8000)
+Acesse o projeto por padrão na porta 8000
+[http://localhost:8000/users](http://localhost:8000/users)
 
